@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Yanone+Kaffeesatz:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap');
+
+.contentCreate{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color:bisque;
+    background-color: rgb(6, 2, 1);
+}
+
+.contInp{
+    padding-top: 5px;    
+    margin-left: 20px;
+    margin-bottom: 5px;
+    width: 620px;
+    height: 200px;
+    justify-content: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.contInpInd{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.contInpInd label{
+    margin-right: 15px;
+}
+
+.contInpInd input{
+    height: 20px;
+}
+
+.contInpInd textarea{
+    width: 500px;
+    height: 100px;
+}
+
+.colum{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.dietsType{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    padding-left: 80px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    margin-left: 20px;
+    width: 200px;
+    height: 250px;
+}
+
+.stepsForm{
+    width: 400px;
+}
+.btnplus{
+    margin-top: 20px;
+}
+
+.imgCont{
+
+    width: 350px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+
+.impImg input{
+    width: 300px;
+    margin-bottom: 5px;
+}
+.impImg label{
+    margin-left: 5px;
+}
+
+.imgCont img{
+    border: 2px solid rgb(249, 206, 135);
+}
+
+.btnBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 50px;
+    align-items: center;
+}
+
+.total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.receta{
+background-image: url(https://i.pinimg.com/564x/64/f9/20/64f92085765bd19ac2d87b3bc1fc4fb4.jpg);
+background-repeat: no-repeat;
+align-items: center;
+justify-content: center;
+background-size: cover;
+width: 600px;
+height: 680px;
+font-family: 'Parisienne', cursive;
+color: red;
+
+}
+
+.error{
+    color: rgb(244, 240, 230);
+    border: 2px solid red;
+    height: 20px;
+    margin-left: 5px;
+} 
+
+.error p{
+    margin-left:10px;
+    margin-top: 1px;
+}
+
+

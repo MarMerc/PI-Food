@@ -1,0 +1,38 @@
+.listPages{
+
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.listPages li{
+
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.liPag{
+    display: inline;
+}
+
+.aPag{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.aPag.active{
+    background-color: brown;
+    color: white;
+    border-radius: 5px;
+}
+
+.aPag:hover:not(active){
+    background-color: #ddd;
+}

@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const axios = require('axios');
 const { Diet, Recipe } =require ('../db');
-const {testFunction, getRecipeAll} = require('../services/RecipesService.js');
+const {getRecipeTitle, getRecipeId, postRecipe} = require('../services/RecipesService.js');
 const {
     API_URL_KEY,
   } = process.env;
@@ -15,37 +15,33 @@ const RecipesRouter = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 //TEST DE FUNCIONAMIENTO
-RecipesRouter.get('/', testFunction);
+//RecipesRouter.get('/', testFunction);
 
-//OBTENER TODAS LAS RECITAS
-RecipesRouter.get('/all', getRecipeAll);
+//OBTENER TODAS LAS RECETAS
+//RecipesRouter.get('/', getAllRecipes);
+
+//OBTENER UNA RECETA POR ID INGRESADO
+// // [ ] GET /recipes/{idReceta}:
+// // Obtener el detalle de una receta en particular
+// // Debe traer solo los datos pedidos en la ruta de detalle de receta
+// // Incluir los tipos de dieta asociados//OBTENER TODAS LAS RECITAS
+
+
 
 // OBTENER LISTADOS DE RECETAS POR NOMBRE INGRESADO (QUERY PARAMS)
 // GET /recipes?name="...": 
 // Obtener un listado de las recetas que contengan la palabra ingresada como query parameter
 // Si no existe ninguna receta mostrar un mensaje adecuado
 
-RecipesRouter.get('/title', (req,res)=>{
-    return res.send('RECETAS POR UN NOMBRE INGRESADO')
-});
+RecipesRouter.get('/', getRecipeTitle);
 
-//OBTENER EL DETALLE DE UNA RECETA EN PARTICULAR
-// [ ] GET /recipes/{idReceta}:
-// Obtener el detalle de una receta en particular
-// Debe traer solo los datos pedidos en la ruta de detalle de receta
-// Incluir los tipos de dieta asociados
+RecipesRouter.get('/:id', getRecipeId);
 
-RecipesRouter.get('/:title', (req,res)=>{
-    return res.send('DETALLE DE UNA RECETAS INGRESADA POR NOMBRE')
-});
+// //CREAR UNA RECETA NUEVA EN BASE DE DATOS
+// // [ ] POST /recipes:
+// // Recibe los datos recolectados desde el formulario controlado de la ruta de creación de recetas por body
+// // Crea una receta en la base de datos relacionada con sus tipos de dietas.
 
-//CREAR UNA RECETA NUEVA EN BASE DE DATOS
-// [ ] POST /recipes:
-// Recibe los datos recolectados desde el formulario controlado de la ruta de creación de recetas por body
-// Crea una receta en la base de datos relacionada con sus tipos de dietas.
-
-RecipesRouter.post('/create', (req,res)=>{
-    return res.send('CREACION DE RECETA NUEVA EN BD')
-});
+RecipesRouter.post('/create', postRecipe);
 
 module.exports = RecipesRouter;

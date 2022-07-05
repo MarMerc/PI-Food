@@ -6,26 +6,29 @@ module.exports = (sequelize) => {
   sequelize.define('recipe', {
     id:{
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUID,
-      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    sumary:{
-        type: DataTypes.TEXT,
+    summary:{
+        type: DataTypes.STRING,
         allowNull: false
     },
     healthScore:{
       type: DataTypes.INTEGER
     },
     steps:{
-      type: DataTypes.ARRAY(DataTypes.JSON)
+      type: DataTypes.ARRAY(DataTypes.STRING)
     },
     image:{
       type: DataTypes.STRING
+    },
+    createDB:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   });
 };

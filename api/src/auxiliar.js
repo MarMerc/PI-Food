@@ -24,7 +24,7 @@ const getApiInfo=async()=>{
             title: d.title,
             sumary: d.sumary,
             healthScore: d.healthScore,
-            steps: analyzedInstructions[0].steps.map(a=>a.steps),
+            steps: d.analyzedInstructions[0].steps.map(a=>a.steps),
             image: d.image,
             diets: d.diets.map(d=>d),
         };
@@ -50,20 +50,21 @@ const getAllRecipes = async()=>{
     return infoTotal;
 };
 
-router.get('/recipes', async (req,res)=>{
+//OBTENER RECETAS POR UN NOMBRE EN PARTICULAR
+const getRecipeTitle = async (req,res)=>{
     const title = req.query.title;
     let recipesTotal = await getAllRecipes();
     if(title){
-        let recipeTitle = await recipesTotal.filter(d=>d.title.toLowerCase().includes(title.toLowerCase()));
-        if(recipeTitle.length){
-            res.status(200).send(recipeTitle);
+        let recipesTitle = await recipesTotal.filter(d=>d.title.toLowerCase().includes(title.toLowerCase()));
+        if(recipesTitle.length){
+            res.status(200).send(recipesTitle);
         }else{
-            res.status(404).send('El personaje no existe!');
+            res.status(404).send('Ningun menu coincidente!');
         }
     }else{
         res.status(200).send(recipesTotal);
     }
-});
+  };
 
 module.exports = router;
 
@@ -116,4 +117,82 @@ const getRecipeTitle = (req,res) =>{
 }
 
 module.exports = { testFunction, getRecipeAll, getRecipeTitle};
+
+
+///otro
+
+
+//OBTENER TODAS LAS RECETAS DE LA API
+
+const getAllRecipes = async () => {
+  try {
+    const respuestaBD = await Recipe.findAll({include: Diet})
+    const respuesta = await axios.get(API_URL_KEY);
+    if(respuesta || respuestaBD){
+      respuesta.data.results?.map(i=>{
+        return{
+          id: i.id,
+          title: i.title,
+          sumary: i.sumary,
+          healthScore: i.healthScore,
+          steps: i.analyzedInstructions[0]?.steps.map(a=>a.step),
+          image: i.image,
+          diets: i.diets,
+        }
+      })
+       let RecipesAllTotal = [respuestaBD, ...recipesApi];
+       return(RecipesAllTotal);    
+    }else{
+      return('Error de respuesta')
+    }
+  } catch (error) {
+  }
+};
+
+//CREAR UNA RECCETA NUEVA
+// const postRecipe = (req,res) => {
+//   const {rcp} = req.body;
+//   if(rcp){
+//       try {
+        
+//       } catch (error) {
+//         res.send(error)
+//       }
+//   }else{
+//     res.json({message: 'Error no hay datos por body para ingresar.'});
+//   }
+// }
+
+
+//OBTENER RECETAS POR UN NOMBRE EN PARTICULAR
+const getRecipesTitle = async (req,res,next)=>{
+  const title = req.query;
+  let recipesTotal = await getAllRecipes();
+  try {
+    if (!title)res.status(200).send(recipesTotal);
+    let recipesTitle = await recipesTotal.filter(d=>d.title.toLowerCase().includes(title.toLowerCase()));
+    res.status(200).send(recipesTitle);
+  } catch (error) {
+    next(error);
+  }
+}
+
+// //OBTENER EL DETALLE DE UNA RECETA EN PARTICULAR
+// const getRecipeDetals = (req,res) =>{
+//   const { id } =req.query;
+//   if(id){
+//     //MOSTRAR POR EL NOMBRE
+
+//   }else{
+//     //MOSTRAR TODO
+//     try {
+//       axios(API_URL_KEY).then((respuesta)=>
+//       res.json({msg:"OK", info: respuesta.data.results})
+//       );
+//     }catch(error){
+//       console.log(error);
+//     }
+//   };
+// }
+
 

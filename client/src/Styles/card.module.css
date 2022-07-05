@@ -1,0 +1,86 @@
+/*
+ https://co.pinterest.com/pin/802625964826254969/ 
+ https://co.pinterest.com/pin/802625964826255066/
+ https://i.pinimg.com/474x/b9/a4/72/b9a472ef6b1dc518d00071b2fbe39d94.jpg
+ https://i.pinimg.com/474x/ae/6e/80/ae6e80f90eab3db9b6124a78f16d706e.jpg
+ https://i.pinimg.com/474x/a2/e6/57/a2e6573de0309b3a69524e88070f11bd.jpg
+
+https://i.pinimg.com/564x/39/fc/c0/39fcc093a9401ecd0017db64d70cf501.jpg
+sushi---> https://i.pinimg.com/474x/ef/2a/ce/ef2ace2f3f2d9377d2a3cc0f642c6599.jpg
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Yanone+Kaffeesatz:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap');
+.cardContainer{
+    background: url(https://i.pinimg.com/564x/c2/1a/82/c21a82ed60134fb6c9fdfdf3c1a1f8b3.jpg) no-repeat center;
+    background-size: cover;
+    width: 400px;
+    height: 460px;
+    margin: 5px;
+    border-color: 5px darkkhaki;
+    border-radius: 15px 50px;
+    display: flex;
+    flex-direction: column;
+    color: bisque;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.link{
+    text-decoration:none;
+}
+
+.title{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size:25px;
+    color: rgb(236, 202, 114);
+    width: 300px;
+    margin-top: -290px;;
+    margin-left: 60px;
+    justify-content: center;
+    font-family: 'Parisienne', cursive;
+}
+
+.imgCard{
+    display: flex;
+    justify-content: center;
+    margin-top: 145px;
+    margin-left:130px;
+    width:150px;
+    height:150px;
+    border-radius:160px;
+}
+
+.dietsCard{
+    color:beige;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+}
+
+.hsCard{
+    display: flex;
+    flex-direction: row;
+    color:beige;
+    font-size: 30px;
+    justify-content: center;
+    margin-top: -35px;
+}
+
+.hsCard h4{
+    color: rgb(249, 209, 107);
+}
+
+.dietsCard{
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+}
+
+.dietsCard p{
+    margin-top: 50px;
+    padding: 4px;
+}
+
