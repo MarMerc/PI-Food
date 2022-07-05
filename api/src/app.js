@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
+const RecipesRouter = require('./routes/RecipesRoute.js');
+const DietsRouter = require('./routes/DietsRoute.js');
+
 require('./db.js');
 
 const server = express();
@@ -22,7 +25,20 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/', routes);
+//server.use('/', routes);
+server.use('/recipes', RecipesRouter);
+server.use('/diets', DietsRouter);
+
+server.get('/', (req,res)=>{
+  const obj={
+    msg:"API - FOOD",
+    rutas:{
+      recetas: "http://localhost:3001/recipes",
+      dietas: "http://localhost:3001/diets",
+    },
+  };
+  res.json(obj);
+});
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
